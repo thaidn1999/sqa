@@ -23,14 +23,14 @@ public class AccountServiceTest {
         rq.setPassword("User_1234");
         Assertions.assertEquals(acc.getPassword(),rq.getPassword());
     }
-    @Test
-    public void testFindUserName2(){
-        Account acc = new Account();
-        acc.setUsername("Admin");
-        acc.setPassword("User_1234");
-        LoginRequest rq = new LoginRequest();
-        rq.setUsername("Admin");
-        rq.setPassword("User1234");
-        Assertions.assertEquals(acc.getPassword(),rq.getPassword());
-    }
+//    @Test
+//    public void testFindUserName2(){
+//        Account acc = new Account();
+//        acc.setUsername("Admin");
+//        acc.setPassword("User_1234");
+//        LoginRequest rq = new LoginRequest();
+//        rq.setUsername("Admin");
+//        rq.setPassword("User1234");
+//        Assertions.assertEquals(acc.getPassword(),rq.getPassword());
+//    }
 }

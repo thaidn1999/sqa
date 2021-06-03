@@ -111,9 +111,13 @@ public class LoginTest {
         txtPassWord.sendKeys("User_1234");
         WebElement btn = driver.findElement(By.xpath("//*[@id=\"root\"]/main/div[1]/form/button/span[1]"));
         btn.click();
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         WebElement bt = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/ul/a[2]/div/div[1]/button"));
         bt.click();
+        WebElement txtStart = driver.findElement(By.xpath("//*[@id=\"root\"]/div/main/main/div[1]/form/div[4]/div/input"));
+        txtStart.sendKeys("01:00:00 25/05/202_");
+        WebElement txtNotify = driver.findElement(By.xpath("//*[@id=\"root\"]/div/main/main/div[1]/form/div[3]/p"));
+        Assert.assertEquals("Invalid Date Format", txtNotify.getText());
 //        WebElement txtStart = driver.findElement(By.xpath("//*[@id=\"root\"]/div/main/main/div[1]/form/div[3]/div/input"));
 //        txtStart.sendKeys("01:00:00 25/05/202_");
 //        WebElement txtNotify = driver.findElement(By.xpath("//*[@id=\"root\"]/div/main/main/div[1]/form/div[3]/p"));
