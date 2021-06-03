@@ -26,6 +26,24 @@ public class LoginTest {
         driver.quit();
     }
     @Test
+    public void LoginNoSuccess() throws InterruptedException {
+        System.setProperty("webdriver.chrome.driver" , "C:\\Selenium\\Selenim_ChromeDr\\ChromeDr\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
+        driver.get("http://localhost:3000/login");
+        WebElement txtUserName = driver.findElement(By.name("username"));
+        WebElement txtPassWord = driver.findElement(By.name("password"));
+        txtUserName.sendKeys("Adminn");
+        txtPassWord.sendKeys("User_1234");
+        WebElement btn = driver.findElement(By.xpath("//*[@id=\"root\"]/main/div[1]/form/button/span[1]"));
+        btn.click();
+        Thread.sleep(5000);
+        WebElement noti = driver.findElement(By.xpath("//*[@id=\"root\"]/main/div[3]/div"));
+        Assert.assertEquals("Sai tài khoản hoặc mật khẩu!",noti.getText());
+        driver.quit();
+    }
+    //*[@id="root"]/main/div[3]/div
+    @Test
     public void UsernameEmptyTest() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver" , "C:\\Selenium\\Selenim_ChromeDr\\ChromeDr\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -99,31 +117,31 @@ public class LoginTest {
                 txtNotify.getText());
     }
 
-    @Test
-    public void TermTest() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver" , "C:\\Selenium\\Selenim_ChromeDr\\ChromeDr\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver = new ChromeDriver();
-        driver.get("http://localhost:3000/");
-        WebElement txtUserName = driver.findElement(By.name("username"));
-        WebElement txtPassWord = driver.findElement(By.name("password"));
-        txtUserName.sendKeys("Admin");
-        txtPassWord.sendKeys("User_1234");
-        WebElement btn = driver.findElement(By.xpath("//*[@id=\"root\"]/main/div[1]/form/button/span[1]"));
-        btn.click();
-        Thread.sleep(5000);
-        WebElement bt = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/ul/a[2]/div/div[1]/button"));
-        bt.click();
-        WebElement txtStart = driver.findElement(By.xpath("//*[@id=\"root\"]/div/main/main/div[1]/form/div[4]/div/input"));
-        txtStart.sendKeys("01:00:00 25/05/202_");
-        WebElement txtNotify = driver.findElement(By.xpath("//*[@id=\"root\"]/div/main/main/div[1]/form/div[3]/p"));
-        Assert.assertEquals("Invalid Date Format", txtNotify.getText());
-//        WebElement txtStart = driver.findElement(By.xpath("//*[@id=\"root\"]/div/main/main/div[1]/form/div[3]/div/input"));
+//    @Test
+//    public void TermTest() throws InterruptedException {
+//        System.setProperty("webdriver.chrome.driver" , "C:\\Selenium\\Selenim_ChromeDr\\ChromeDr\\chromedriver.exe");
+//        WebDriver driver = new ChromeDriver();
+//        driver = new ChromeDriver();
+//        driver.get("http://localhost:3000/");
+//        WebElement txtUserName = driver.findElement(By.name("username"));
+//        WebElement txtPassWord = driver.findElement(By.name("password"));
+//        txtUserName.sendKeys("Admin");
+//        txtPassWord.sendKeys("User_1234");
+//        WebElement btn = driver.findElement(By.xpath("//*[@id=\"root\"]/main/div[1]/form/button/span[1]"));
+//        btn.click();
+//        Thread.sleep(5000);
+//        WebElement bt = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/ul/a[2]/div/div[1]/button"));
+//        bt.click();
+//        WebElement txtStart = driver.findElement(By.xpath("//*[@id=\"root\"]/div/main/main/div[1]/form/div[4]/div/input"));
+//        txtStart.sendKeys("01:00:00 25/05/202_");
+//        WebElement txtNotify = driver.findElement(By.xpath("//*[@id=\"root\"]/div/main/main/div[1]/form/div[3]/p"));
+//        Assert.assertEquals("Invalid Date Format", txtNotify.getText());
+////        WebElement txtStart = driver.findElement(By.xpath("//*[@id=\"root\"]/div/main/main/div[1]/form/div[3]/div/input"));
 //        txtStart.sendKeys("01:00:00 25/05/202_");
 //        WebElement txtNotify = driver.findElement(By.xpath("//*[@id=\"root\"]/div/main/main/div[1]/form/div[3]/p"));
 //        txtNotify.sendKeys("Invalid Date Format");
 //        Assert.assertEquals("Invalid Date Format", txtNotify.getText());
 //        driver.quit();
-    }
+//    }
 
 }
